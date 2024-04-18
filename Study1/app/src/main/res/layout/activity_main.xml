@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--constraintLayout에서는 component가 상하좌우 변들 중 둘 이상의 위치가 결정되어야
+        component로서 제대로 기능한다.
+        layout_constraintSide_toSideOf 메소드는 Top, Bottom일 땐 > y좌표만,
+        Left, Right일 땐, x좌표만 참조한다. 아래 버튼 Component는 textView의 Bottom을 참조했는데
+        TextView의 바로 아래가 아니라, y좌표만 일치되었다.-->
+    <!--android:layout_marginTop은 layout_constraintSide_toSideOf로 정해진 y좌표를
+        증가시키는 것이다. but component의 좌표 값으로 설정되지는 않는다. -->
+    <TextView
+        android:id="@+id/textView_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="안녕하세요."
+        android:textColor="#B11E1E"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--블럭 안에 주석을 넣을 수 없다!.
+        id는 @+id/로 시작한다. 이 아이디가 java코드에서 식별하는 키워드가 된다.-->
+    <EditText
+        android:id="@+id/et_test"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="type text."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_test" />
+
+    <Button
+        android:id="@+id/btn_move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="이동"
+        app:layout_constraintLeft_toRightOf="@id/et_test"
+        app:layout_constraintTop_toBottomOf="@id/textView_test" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="asdasdasd"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="asdasdasd"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/baseline_flatware_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_android"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="155dp"
+        android:layout_marginBottom="279dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <!--margin은 자신의 기본 위치에서 이동하는거임. 여기서는 bottom과 right를 기준으로 설정했기 때문에,
+        margin도 right랑 bottom을 사용함.-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
