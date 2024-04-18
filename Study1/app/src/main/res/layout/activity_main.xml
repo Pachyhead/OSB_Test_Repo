@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--constraintLayout에서는 component가 상하좌우 변들 중 둘 이상의 위치가 결정되어야
+        component로서 제대로 기능한다.
+        layout_constraintSide_toSideOf 메소드는 Top, Bottom일 땐 > y좌표만,
+        Left, Right일 땐, x좌표만 참조한다. 아래 버튼 Component는 textView의 Bottom을 참조했는데
+        TextView의 바로 아래가 아니라, y좌표만 일치되었다.-->
+    <!--android:layout_marginTop은 layout_constraintSide_toSideOf로 정해진 y좌표를
+        증가시키는 것이다. but component의 좌표 값으로 설정되지는 않는다. -->
+    <TextView
+        android:id="@+id/textView_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안녕하세요."
+        android:textColor="#B11E1E"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!--블럭 안에 주석을 넣을 수 없다!.
+        id는 @+id/로 시작한다. 이 아이디가 java코드에서 식별하는 키워드가 된다.-->
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="아이디를 입력하세요."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_test"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btn_move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이동"
+        app:layout_constraintLeft_toRightOf="@id/et_id"
+        app:layout_constraintTop_toBottomOf="@id/textView_test"
+        android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/baseline_flatware_24"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
